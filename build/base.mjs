@@ -6,6 +6,7 @@ const targets = ['chrome >= 49', 'edge >= 88']
 
 export default defineConfig({
   target: 'web',
+  mode: isProd ? 'production' : 'development',
   devtool: isProd ? false : 'source-map',
   resolve: {
     alias: {
