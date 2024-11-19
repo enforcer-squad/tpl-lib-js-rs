@@ -1,7 +1,7 @@
-import { defineConfig } from '@rspack/cli'
-import { rspack } from '@rspack/core'
+import { defineConfig } from '@rspack/cli';
+import { rspack } from '@rspack/core';
 
-const targets = ['chrome >= 49', 'edge >= 88']
+const targets = ['chrome >= 49', 'edge >= 88'];
 
 export default defineConfig({
   entry: {
@@ -43,4 +43,4 @@ export default defineConfig({
   experiments: {
     css: true,
   },
-})
+});

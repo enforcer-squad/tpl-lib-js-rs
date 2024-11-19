@@ -1,0 +1,75 @@
+{
+  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  // 格式化相关配置
+  "formatter": {
+    // 是否启用格式化功能
+    "enabled": true,
+    // 如果存在语法错误，是否继续进行格式化
+    "formatWithErrors": false,
+    // 缩进样式，可选值：space（空格）或 tab（制表符）
+    "indentStyle": "space",
+    // 缩进宽度（空格数量）
+    "indentWidth": 2,
+    // 行尾字符，可选值：lf（换行符）、crlf（回车换行符）
+    "lineEnding": "lf",
+    // 单行的最大宽度
+    "lineWidth": 80,
+    // 属性位置自动调整，默认为 auto
+    "attributePosition": "auto"
+  },
+  // 导入语句的组织配置
+  "organizeImports": {
+    // 是否启用自动整理导入功能
+    "enabled": true
+  },
+  // Linter（代码检查器）相关配置
+  "linter": {
+    // 是否启用代码检查功能
+    "enabled": true,
+    "rules": {
+      // 使用推荐的规则集
+      "recommended": true,
+      "correctness": {
+        "noUnusedVariables": "error",
+        "noUnusedImports": "error",
+        "noUndeclaredVariables": "error"
+      },
+      "suspicious": {
+        "noImplicitAnyLet": "error",
+        "noDuplicateAtImportRules": "error"
+      }
+    }
+  },
+
+  // 针对 JavaScript 的特殊格式化配置
+  "javascript": {
+    "formatter": {
+      // 是否强制使用分号，可选值：always（总是使用）、never（从不使用）
+      "semicolons": "always",
+      // JSX 属性中的引号样式，可选值：double（双引号）、single（单引号）
+      "jsxQuoteStyle": "double",
+      // 属性名引号样式，可选值：asNeeded（按需添加）、preserve（保留原有样式）
+      "quoteProperties": "asNeeded",
+      // 是否在尾部添加逗号，可选值：es5（ES5 风格）、none（无尾逗号）
+      "trailingCommas": "es5",
+      // 箭头函数参数是否始终用括号括起来，可选值：always（总是）、avoid（尽量避免）
+      "arrowParentheses": "always",
+      // 对象或数组括号内是否加空格，可选值：true（加空格）、false（不加空格）
+      "bracketSpacing": true,
+      // JSX 闭合标签是否与同一行的其他内容保持同行，可选值：true（保持同行）、false（换行）
+      "bracketSameLine": false,
+      // 引号样式，可选值：single（单引号）、double（双引号）
+      "quoteStyle": "single",
+      // 属性位置自动调整，默认为 auto
+      "attributePosition": "auto"
+    }
+  },
+
+  // 针对 JSON 文件的特殊格式化配置
+  "json": {
+    "formatter": {
+      // 缩进样式，可选值：space（空格）或 tab（制表符）
+      "indentStyle": "space"
+    }
+  }
+}

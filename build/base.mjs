@@ -1,32 +1,17 @@
-import { defineConfig } from '@rspack/cli'
-import { rspack } from '@rspack/core'
-import { isProd, polyfill } from './helper.js'
+import { defineConfig } from '@rspack/cli';
+import { rspack } from '@rspack/core';
+import { isProd, polyfill, targets, resolve } from './helper.mjs';
 
-const targets = ['chrome >= 49', 'edge >= 88']
-
-export default defineConfig({
+const base = defineConfig({
   target: 'web',
-  mode: isProd ? 'production' : 'development',
-  devtool: isProd ? false : 'source-map',
   resolve: {
     alias: {
       '@': resolve('./src'),
     },
-    extensions: ['.js', '.jsx', '.json', 'glsl'],
+    extensions: ['.js', '.jsx', '.json', '.glsl'],
   },
-  entry: {
-    main: './src/index.js',
-  },
+
   module: {
-    parser: {
-      asset: {
-        filename: '[name].[hash:8].[ext]',
-        dataUrlCondition: {
-          // 小于等于 4kb，且以 `.png` 结尾的模块将被 Base64 编码
-          maxSize: 4 * 1024,
-        },
-      },
-    },
     rules: [
       {
         test: /\.js[x]?$/,
@@ -58,7 +43,6 @@ export default defineConfig({
       },
     ],
   },
-  plugins: [new rspack.HtmlRspackPlugin({ template: './index.html' })],
   optimization: {
     minimizer: [
       new rspack.SwcJsMinimizerRspackPlugin(),
@@ -70,4 +54,6 @@ export default defineConfig({
   experiments: {
     css: true,
   },
-})
+});
+
+export default base;
