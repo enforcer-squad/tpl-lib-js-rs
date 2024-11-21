@@ -6,4 +6,4 @@ const testObj = {
 
 console.log(Object.values(testObj));
 
-export { sum, sum };
+export { sum };

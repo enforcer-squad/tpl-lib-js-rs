@@ -1,5 +1,6 @@
 import { defineConfig } from '@rspack/cli';
 import { rspack } from '@rspack/core';
+import ESLintPlugin from 'eslint-rspack-plugin'
 import ReactRefreshPlugin from '@rspack/plugin-react-refresh';
 import { merge } from 'webpack-merge';
 import base from './base.mjs';
@@ -38,6 +39,7 @@ const dev = defineConfig({
   plugins: [
     ...htmlPlugins,
     new ReactRefreshPlugin(),
+    new ESLintPlugin(),
     new CopyRspackPlugin({
       patterns: [
         {
