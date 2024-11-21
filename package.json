@@ -1,23 +1,48 @@
 {
-  "name": "rspack-vanilla-starter",
-  "private": true,
+  "name": "tpl-lib-js-rs",
   "version": "1.0.0",
+  "description": "javascript library template with rspack",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
   "engines": {
     "node": ">=20.0.0",
     "pnpm": ">=9.0.0"
   },
+  "keywords": [
+    "library",
+    "javascript",
+    "template",
+    "rspack"
+  ],
+  "author": "enforcer.a06@gmail.com",
+  "license": "MIT",
   "packageManager": "pnpm@9.13.0",
   "scripts": {
+    "prepare": "husky install",
     "start": "cross-env NODE_ENV=development rspack serve --config ./build/dev.mjs",
-    "build": "cross-env NODE_ENV=production rspack build"
+    "build": "cross-env NODE_ENV=production rspack build --config ./build/prod.mjs --analyze"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "devDependencies": {
+    "@ant-design/icons": "5.5.1",
     "@biomejs/biome": "1.9.4",
     "@rspack/cli": "1.1.1",
     "@rspack/core": "1.1.1",
+    "@rspack/plugin-react-refresh": "1.0.0",
+    "antd": "4.24.16",
     "cross-env": "7.0.3",
     "glob": "11.0.0",
-    "webpack-merge": "6.0.1"
+    "less-loader": "12.2.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-refresh": "0.14.2",
+    "react-router-dom": "6.28.0",
+    "webpack-merge": "6.0.1",
+    "webpack-node-externals": "3.0.0"
   },
   "dependencies": {
     "core-js": "3.39.0"

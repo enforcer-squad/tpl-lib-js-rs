@@ -1,13 +1,26 @@
-# Local
-.DS_Store
-*.local
-*.log*
-
-# Dist
 node_modules
-dist/
+coverage
+dist
+docs_dist
+compiled
+bin
 
-# IDE
-.vscode/*
-!.vscode/extensions.json
+.dumi/tmp
+.dumi/tmp-production
+.eslintcache
+.pnpm-debug.log
+.nyc_output
+.DS_Store
+.awcache
 .idea
+.rpt2_cache
+.dist
+.cache
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.idea
+*.log
+*.tsbuildinfo

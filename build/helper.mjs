@@ -3,10 +3,10 @@ import { fileURLToPath } from 'node:url';
 import { rspack } from '@rspack/core';
 import { globSync } from 'glob';
 
+const { HtmlRspackPlugin } = rspack;
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-
-const { HtmlRspackPlugin } = rspack;
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -41,4 +41,66 @@ const getDemosEntries = () => {
   return { entries, htmlPlugins };
 };
 
-export { isProd, resolve, polyfill, targets, getDemosEntries };
+const getCSSModuleRules = () => {
+  const sourceMap = isProd;
+  const cssLoader = {
+    loader: 'builtin:lightningcss-loader',
+    options: {
+      targets,
+      sourceMap,
+    },
+  };
+
+  const lessLoader = {
+    loader: 'less-loader',
+    options: {
+      sourceMap,
+    },
+  };
+
+  const cssNodeModuleRule = {
+    test: /\.css$/,
+    use: [cssLoader],
+    include: [resolve('./node_modules')],
+    type: 'css',
+  };
+
+  const cssRule = {
+    test: /\.global\.css$/,
+    use: [cssLoader],
+    include: [resolve('./demos')],
+    type: 'css',
+  };
+
+  const cssModuleRule = {
+    test: /^(?!.*\.global).*\.css$/,
+    use: [cssLoader],
+    include: [resolve('./demos')],
+    type: 'css/module',
+  };
+
+  const lessRule = {
+    test: /\.global\.less$/,
+    use: [cssLoader, lessLoader],
+    include: [resolve('./demos')],
+    type: 'css',
+  };
+
+  const lessModuleRule = {
+    test: /^(?!.*\.global).*\.less$/,
+    use: [cssLoader, lessLoader],
+    include: [resolve('./demos')],
+    type: 'css/module',
+  };
+
+  return [cssNodeModuleRule, cssRule, cssModuleRule, lessRule, lessModuleRule];
+};
+
+export {
+  isProd,
+  resolve,
+  polyfill,
+  targets,
+  getDemosEntries,
+  getCSSModuleRules,
+};

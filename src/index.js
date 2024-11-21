@@ -1,3 +1,9 @@
 const sum = (a, b) => a + b;
 
-export { sum };
+const testObj = {
+  a: 1,
+};
+
+console.log(Object.values(testObj));
+
+export { sum, sum };

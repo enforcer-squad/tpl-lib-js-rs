@@ -1,6 +1,5 @@
 import { defineConfig } from '@rspack/cli';
-import { rspack } from '@rspack/core';
-import { isProd, polyfill, targets, resolve } from './helper.mjs';
+import { isProd, polyfill, resolve } from './helper.mjs';
 
 const base = defineConfig({
   target: 'web',
@@ -10,12 +9,11 @@ const base = defineConfig({
     },
     extensions: ['.js', '.jsx', '.json', '.glsl'],
   },
-
   module: {
     rules: [
       {
         test: /\.js[x]?$/,
-        include: [resolve('./src'), resolve('./demo')],
+        include: [resolve('./src'), resolve('./demos')],
         use: [
           {
             loader: 'builtin:swc-loader',
@@ -37,22 +35,19 @@ const base = defineConfig({
                 },
               },
               env: polyfill,
+              rspackExperiments: {
+                import: [
+                  {
+                    libraryName: 'antd',
+                    style: '{{member}}/style/index.css',
+                  },
+                ],
+              },
             },
           },
         ],
       },
     ],
-  },
-  optimization: {
-    minimizer: [
-      new rspack.SwcJsMinimizerRspackPlugin(),
-      new rspack.LightningCssMinimizerRspackPlugin({
-        minimizerOptions: { targets },
-      }),
-    ],
-  },
-  experiments: {
-    css: true,
   },
 });
 
