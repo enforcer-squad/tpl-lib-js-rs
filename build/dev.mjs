@@ -1,6 +1,5 @@
 import { defineConfig } from '@rspack/cli';
 import { rspack } from '@rspack/core';
-import ESLintPlugin from 'eslint-rspack-plugin'
 import ReactRefreshPlugin from '@rspack/plugin-react-refresh';
 import { merge } from 'webpack-merge';
 import base from './base.mjs';
@@ -20,14 +19,14 @@ const dev = defineConfig({
       progress: true,
     },
     headers: {
-      'X-Custom-Foo': 'bar',
+      'Access-Control-Allow-Origin': '*',
     },
     historyApiFallback: {
       disableDotRule: true,
     },
     host: 'local-ip',
     hot: true,
-    open: true,
+    // open: true,
     port: 2333,
   },
   entry: {
@@ -39,7 +38,6 @@ const dev = defineConfig({
   plugins: [
     ...htmlPlugins,
     new ReactRefreshPlugin(),
-    new ESLintPlugin(),
     new CopyRspackPlugin({
       patterns: [
         {

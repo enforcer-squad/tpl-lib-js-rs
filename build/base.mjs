@@ -1,8 +1,12 @@
 import { defineConfig } from '@rspack/cli';
+import { ModuleFederationPlugin } from '@module-federation/enhanced/rspack';
 import { isProd, polyfill, resolve } from './helper.mjs';
 
 const base = defineConfig({
   target: 'web',
+  output: {
+    publicPath: '/federation_provider/',
+  },
   resolve: {
     alias: {
       '@': resolve('./src'),
@@ -49,6 +53,18 @@ const base = defineConfig({
       },
     ],
   },
+  plugins: [
+    new ModuleFederationPlugin({
+      name: 'federation_provider',
+      exposes: {
+        './expose': resolve('./src/expose.js'),
+        './button': resolve('./src/button/index.jsx'),
+      },
+      shared: ['react', 'react-dom'],
+      dts: false,
+      // getPublicPath: `return "//" + window.location.host + "/federation_provider"`,
+    }),
+  ],
 });
 
 export default base;
