@@ -1,6 +1,7 @@
-import './index.css';
+import * as styles from './index.css';
+
 const Button = () => {
-  return <div className={'content'}>Provider button</div>;
+  return <div className={styles['content']}>Provider button</div>;
 };
 
 export { Button };

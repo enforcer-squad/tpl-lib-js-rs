@@ -11,7 +11,7 @@ const __dirname = dirname(__filename);
 const isProd = process.env.NODE_ENV === 'production';
 
 const targets = ['chrome >= 49', 'edge >= 88'];
-const resolve = (dir) => {
+const resolve = dir => {
   return join(__dirname, '..', dir);
 };
 
@@ -33,7 +33,7 @@ const getDemosEntries = () => {
         filename: `demos/${entry}/index.html`,
         inject: 'body',
         chunks: [`demos/${entry}`],
-      })
+      }),
     );
     return ret;
   }, {});
@@ -68,39 +68,32 @@ const getCSSModuleRules = () => {
   const cssRule = {
     test: /\.global\.css$/,
     use: [cssLoader],
-    include: [resolve('./demos')],
+    include: [resolve('./demos'), resolve('./src')],
     type: 'css',
   };
 
   const cssModuleRule = {
     test: /^(?!.*\.global).*\.css$/,
     use: [cssLoader],
-    include: [resolve('./demos')],
+    include: [resolve('./demos'), resolve('./src')],
     type: 'css/module',
   };
 
   const lessRule = {
     test: /\.global\.less$/,
     use: [cssLoader, lessLoader],
-    include: [resolve('./demos')],
+    include: [resolve('./demos'), resolve('./src')],
     type: 'css',
   };
 
   const lessModuleRule = {
     test: /^(?!.*\.global).*\.less$/,
     use: [cssLoader, lessLoader],
-    include: [resolve('./demos')],
+    include: [resolve('./demos'), resolve('./src')],
     type: 'css/module',
   };
 
   return [cssNodeModuleRule, cssRule, cssModuleRule, lessRule, lessModuleRule];
 };
 
-export {
-  isProd,
-  resolve,
-  polyfill,
-  targets,
-  getDemosEntries,
-  getCSSModuleRules,
-};
+export { isProd, resolve, polyfill, targets, getDemosEntries, getCSSModuleRules };
