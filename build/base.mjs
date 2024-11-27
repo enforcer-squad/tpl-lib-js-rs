@@ -5,7 +5,8 @@ import { isProd, polyfill, resolve } from './helper.mjs';
 const base = defineConfig({
   target: 'web',
   output: {
-    publicPath: '/federation_provider/',
+    // publicPath: '/federation_provider/',
+    publicPath: 'auto',
   },
   resolve: {
     alias: {

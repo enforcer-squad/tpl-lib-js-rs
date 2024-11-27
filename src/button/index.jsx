@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import * as styles from './index.css';
 
 const Button = () => {

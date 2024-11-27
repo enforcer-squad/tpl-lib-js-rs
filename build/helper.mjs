@@ -51,6 +51,18 @@ const getCSSModuleRules = () => {
     },
   };
 
+   const cssModuleLoader = {
+    loader: 'builtin:lightningcss-loader',
+    options: {
+      targets,
+      sourceMap,
+      modules: {
+              localIdentName: '[name]__[local]--[hash:base64:5]',
+              exportLocalsConvention: 'camelCase', // 确保类名是 camelCase
+            },
+    },
+  };
+
   const lessLoader = {
     loader: 'less-loader',
     options: {
@@ -74,7 +86,7 @@ const getCSSModuleRules = () => {
 
   const cssModuleRule = {
     test: /^(?!.*\.global).*\.css$/,
-    use: [cssLoader],
+    use: [cssModuleLoader],
     include: [resolve('./demos'), resolve('./src')],
     type: 'css/module',
   };
@@ -88,7 +100,7 @@ const getCSSModuleRules = () => {
 
   const lessModuleRule = {
     test: /^(?!.*\.global).*\.less$/,
-    use: [cssLoader, lessLoader],
+    use: [cssModuleLoader, lessLoader],
     include: [resolve('./demos'), resolve('./src')],
     type: 'css/module',
   };
