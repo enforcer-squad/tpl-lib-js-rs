@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { defineConfig } from 'dumi';
 import pkg from './package.json';
 

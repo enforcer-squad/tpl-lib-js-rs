@@ -1,5 +1,5 @@
 ---
-title: Infervision
+title: 组件库
 hero:
   title: 业务组件库
   description: 企业级产品开发体系，创造高效愉悦的工作体验
