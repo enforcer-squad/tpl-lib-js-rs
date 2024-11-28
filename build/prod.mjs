@@ -1,5 +1,7 @@
 import { rspack } from '@rspack/core';
 import { defineConfig } from '@rspack/cli';
+// import { RsdoctorRspackPlugin } from '@rsdoctor/rspack-plugin';
+// import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import { merge } from 'webpack-merge';
 import nodeExternals from 'webpack-node-externals';
 import base from './base.mjs';
@@ -34,6 +36,12 @@ const prod = defineConfig({
     minimize: true,
     minimizer: [new SwcJsMinimizerRspackPlugin()],
   },
+  plugins: [
+    // new BundleAnalyzerPlugin({
+    //   analyzerPort: 8899,
+    // }),
+    // new RsdoctorRspackPlugin({}),
+  ],
 });
 
 export default merge(base, prod);
