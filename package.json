@@ -20,16 +20,28 @@
   "license": "MIT",
   "packageManager": "pnpm@9.13.0",
   "scripts": {
-    "prepare": "husky install",
+    "prepare": "husky",
     "start": "cross-env NODE_ENV=development rspack serve --config ./build/dev.mjs",
     "build": "cross-env NODE_ENV=production rspack build --config ./build/prod.mjs --analyze"
   },
   "publishConfig": {
     "access": "public"
   },
+  "lint-staged": {
+    "src/**/*.js": [
+      "eslint --cache --fix",
+      "prettier --write"
+    ],
+    "demos/**/*.js": [
+      "eslint --cache --fix",
+      "prettier --write"
+    ]
+  },
   "devDependencies": {
     "@ant-design/icons": "5.5.1",
     "@biomejs/biome": "1.9.4",
+    "@commitlint/cli": "^19.6.0",
+    "@commitlint/config-conventional": "^19.6.0",
     "@eslint/js": "9.15.0",
     "@module-federation/enhanced": "0.7.6",
     "@rspack/cli": "1.1.1",
@@ -41,8 +53,9 @@
     "eslint-plugin-react": "7.37.2",
     "glob": "11.0.0",
     "globals": "15.12.0",
-    "husky": "9.1.7",
+    "husky": "^9.1.7",
     "less-loader": "12.2.0",
+    "lint-staged": "^15.2.10",
     "prettier": "3.3.3",
     "react": "18.3.1",
     "react-dom": "18.3.1",
@@ -52,6 +65,7 @@
     "webpack-node-externals": "3.0.0"
   },
   "dependencies": {
-    "core-js": "3.39.0"
+    "core-js": "3.39.0",
+    "konva": "8.4.3"
   }
 }

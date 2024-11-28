@@ -51,15 +51,14 @@ const getCSSModuleRules = () => {
     },
   };
 
-   const cssModuleLoader = {
+  const cssModuleLoader = {
     loader: 'builtin:lightningcss-loader',
     options: {
       targets,
       sourceMap,
-      modules: {
-              localIdentName: '[name]__[local]--[hash:base64:5]',
-              exportLocalsConvention: 'camelCase', // 确保类名是 camelCase
-            },
+      cssModules: {
+        pattern: '[hash]-[local]',
+      },
     },
   };
 

@@ -5,8 +5,8 @@ import { isProd, polyfill, resolve } from './helper.mjs';
 const base = defineConfig({
   target: 'web',
   output: {
-    // publicPath: '/federation_provider/',
-    publicPath: 'auto',
+    publicPath: '/federation_provider/',
+    // publicPath: 'auto',
   },
   resolve: {
     alias: {
@@ -15,6 +15,11 @@ const base = defineConfig({
     extensions: ['.js', '.jsx', '.json', '.glsl'],
   },
   module: {
+    parser: {
+      'css/module': {
+        namedExports: false,
+      },
+    },
     rules: [
       {
         test: /\.js[x]?$/,
@@ -57,11 +62,15 @@ const base = defineConfig({
   plugins: [
     new ModuleFederationPlugin({
       name: 'federation_provider',
+      filename: 'remoteEntry.js',
       exposes: {
-        './expose': resolve('./src/expose.js'),
         './button': resolve('./src/button/index.jsx'),
+        './mf': resolve('./src/mf.js'),
       },
-      shared: ['react', 'react-dom'],
+      shared: {
+        react: { singleton: true },
+        'react-dom': { singleton: true },
+      },
       dts: false,
       // getPublicPath: `return "//" + window.location.host + "/federation_provider"`,
     }),
