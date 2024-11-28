@@ -68,7 +68,6 @@
     "webpack-node-externals": "3.0.0"
   },
   "dependencies": {
-    "core-js": "3.39.0",
-    "konva": "8.4.3"
+    "core-js": "3.39.0"
   }
 }

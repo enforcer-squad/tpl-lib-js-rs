@@ -11,9 +11,6 @@ importers:
       core-js:
         specifier: 3.39.0
         version: 3.39.0
-      konva:
-        specifier: 8.4.3
-        version: 8.4.3
     devDependencies:
       '@ant-design/icons':
         specifier: 5.5.1
@@ -4801,9 +4798,6 @@ packages:
 
   kolorist@1.8.0:
     resolution: {integrity: sha512-Y+60/zizpJ3HRH8DCss+q95yr6145JXZo46OTpFvDZWLfRCE4qChOyk1b26nMaNpfHHgxagk9dXT5OP0Tfe+dQ==}
-
-  konva@8.4.3:
-    resolution: {integrity: sha512-ARqdgAbdNIougRlOKvkQwHlGhXPRBV4KvhCP+qoPpGoVQwwiJe4Hkdu4HHdRPb9rGUp04jDTAxBzEwBsE272pg==}
 
   latest-version@3.1.0:
     resolution: {integrity: sha512-Be1YRHWWlZaSsrz2U+VInk+tO0EwLIyV+23RhWLINJYwg/UIikxjlj3MhH37/6/EDCAusjajvMkMMUXRaMWl/w==}
@@ -13644,8 +13638,6 @@ snapshots:
       - supports-color
 
   kolorist@1.8.0: {}
-
-  konva@8.4.3: {}
 
   latest-version@3.1.0:
     dependencies:
