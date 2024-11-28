@@ -7,7 +7,7 @@ export default [
   pluginJs.configs.recommended,
   pluginReact.configs.flat.recommended,
   {
-    ignores: ['dist/**/*', 'node_modules/**/*'],
+    ignores: ['*.js', 'dist/**/*', 'node_modules/**/*'],
   },
   {
     files: ['**/*.{js,mjs,cjs,jsx}'],

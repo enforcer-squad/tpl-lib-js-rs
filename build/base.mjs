@@ -68,8 +68,8 @@ const base = defineConfig({
         './mf': resolve('./src/mf.js'),
       },
       shared: {
-        react: { singleton: true },
-        'react-dom': { singleton: true },
+        react: { singleton: true, requiredVersion: '^18.0.0' },
+        'react-dom': { singleton: true, requiredVersion: '^18.0.0' },
       },
       dts: false,
       // getPublicPath: `return "//" + window.location.host + "/federation_provider"`,
